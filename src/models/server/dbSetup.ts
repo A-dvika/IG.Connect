@@ -33,6 +33,8 @@ export default async function getOrCreateDB() {
           creationError.message
         );
       } else {
+        console.error("Error:", error);
+
         console.error(
           "Unexpected error while creating database or collections:",
           creationError
