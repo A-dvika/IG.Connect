@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
 import getOrCreateDB from './models/server/dbSetup';
 import getOrCreateStorage from './models/server/storageSetup';
@@ -8,10 +7,10 @@ import getOrCreateStorage from './models/server/storageSetup';
  * Middleware to ensure the database and storage are set up before processing requests.
  * Executes before all requests except for paths excluded by the matcher.
  */
-export async function middleware(request: NextRequest) {
+export async function middleware() {
   try {
     console.log('Initializing resources...');
-    
+
     // Run database and storage setup concurrently
     await Promise.all([getOrCreateDB(), getOrCreateStorage()]);
 
